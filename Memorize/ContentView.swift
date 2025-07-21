@@ -22,11 +22,11 @@ struct ContentView: View {
 }
 
 struct CardView: View {
-    var isFacaUp: Bool = true
+    @State var isFacaUp = true
     
     var body: some View {
         ZStack  {
-            var base: RoundedRectangle = RoundedRectangle(cornerRadius: 12)
+            let  base = RoundedRectangle(cornerRadius: 12)
             if isFacaUp {
                 base.fill(.white)
                 base.strokeBorder(lineWidth: 2)
@@ -34,6 +34,9 @@ struct CardView: View {
             } else {
                 base.fill()
             }
+        }
+        .onTapGesture {
+            isFacaUp.toggle()
         }
     }
 }
