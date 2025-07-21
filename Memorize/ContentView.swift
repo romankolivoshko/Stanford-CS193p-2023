@@ -12,8 +12,8 @@ struct ContentView: View {
         HStack {
             CardView(isFacaUp: true)
             CardView()
-            CardView()
-            CardView()
+            CardView(isFacaUp: true)
+            CardView(isFacaUp: true)
         }
         .foregroundColor(.orange)
         .padding()
@@ -22,20 +22,19 @@ struct ContentView: View {
 }
 
 struct CardView: View {
-    var isFacaUp: Bool = false
+    var isFacaUp: Bool = true
     
     var body: some View {
-        ZStack (content: {
+        ZStack  {
+            var base: RoundedRectangle = RoundedRectangle(cornerRadius: 12)
             if isFacaUp {
-                RoundedRectangle(cornerRadius: 12)
-                    .foregroundColor(.white)
-                RoundedRectangle(cornerRadius: 12)
-                    .strokeBorder(lineWidth: 2)
+                base.fill(.white)
+                base.strokeBorder(lineWidth: 2)
                 Text("👻").font(.largeTitle)
             } else {
-                RoundedRectangle(cornerRadius: 12)
+                base.fill()
             }
-        })
+        }
     }
 }
 
